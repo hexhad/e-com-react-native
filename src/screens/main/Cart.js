@@ -20,12 +20,11 @@ export default function Cart() {
     let olderItems = await retriveData(STORAGE.CART);
     let deleted = delete olderItems[prop];
 
-    if (deleted){
+    if (deleted) {
       console.log();
-      await setData(STORAGE.CART,olderItems);
+      await setData(STORAGE.CART, olderItems);
       setCart(olderItems);
     }
-
   }
   useEffect(() => {
     retCart();
@@ -51,7 +50,9 @@ export default function Cart() {
                     <Text>Quentity {item.qty}</Text>
                   </View>
                   <View>
-                    <TouchableOpacity style={styles.delete} onPress={()=>deleteItem(item.id)}>
+                    <TouchableOpacity
+                      style={styles.delete}
+                      onPress={() => deleteItem(item.id)}>
                       <Text style={styles.deleteText}>Delete</Text>
                     </TouchableOpacity>
                   </View>
