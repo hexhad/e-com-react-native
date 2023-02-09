@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {ROUTES, STORAGE} from '../../constraints';
 import {postAuth} from '../../api/main';
 import {setData} from '../../storage/async';
+import { styles } from "./styles/LoginStyles";
 
 export default function LogIn(props) {
   const {navigation} = props;
@@ -11,16 +12,17 @@ export default function LogIn(props) {
   const [password, setPassword] = useState();
 
   async function validateApiCall() {
-    const {token} = await postAuth({
+    const {token, id} = await postAuth({
       username: 'kminchelle',
       password: '0lelplR',
     });
 
     if (!!token) {
+      await setData(STORAGE.USER, id);
       await setData(STORAGE.TOKEN, token);
       navigation.navigate(ROUTES.HOME);
     } else {
-      console.log("INVALID");
+      console.log('INVALID');
     }
   }
 

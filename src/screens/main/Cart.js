@@ -12,7 +12,10 @@ export default function Cart() {
 
   async function retCart() {
     let olderItems = await retriveData(STORAGE.CART);
-    setCart(Object.values(olderItems));
+    if (!!olderItems) {
+      setCart(Object.values(olderItems));
+    }
+    
   }
 
   async function deleteItem(prop) {
