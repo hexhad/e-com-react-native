@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 
 export default function AuthStack() {
   return (
-    <Stack.Navigator initialRouteName={ROUTES.LOGIN} screenOptions={{headerShown: false}}>
+    <Stack.Navigator initialRouteName={ROUTES.HOME} screenOptions={{headerShown: false}}>
       <Stack.Screen name={ROUTES.LOGIN} component={Login} />
       <Stack.Screen name={ROUTES.HOME} component={MainStack} />
     </Stack.Navigator>
