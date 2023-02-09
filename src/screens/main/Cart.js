@@ -1,13 +1,22 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { ROUTES } from '../../constraints'
+import {View, Text, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {STORAGE, ROUTES} from '../../constraints';
+import {setData, retriveData} from '../../storage/async';
 
-export default function Cart(props) {
-    const {navigation} = props
+export default function Cart() {
+  const [cart, setCart] = useState();
+
+  async function retCart() {
+    let olderItems = await retriveData(STORAGE.CART);
+    setCart(olderItems);
+  }
+  useEffect(() => {
+    retCart();
+  }, []);
+
   return (
     <View>
       <Text>cart</Text>
-      <TouchableOpacity onPress={()=>navigation.navigate(ROUTES.MOREINFO)}><Text>CartDetails</Text></TouchableOpacity>
     </View>
-  )
+  );
 }

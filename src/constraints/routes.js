@@ -5,6 +5,6 @@ export default {
     PRODUCTS: 'Products',
     CART:'Cart',
     PROFILE:'Profile',
-    MOREINFO:'MoreInfo',
-    CARTNAVIGATOR:'CartNavigator',
+    MORE_INFO:'MoreInfo',
+    PRODUCS_NAV:'ProductsNav',
 };
