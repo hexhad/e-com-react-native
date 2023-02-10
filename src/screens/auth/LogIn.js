@@ -12,7 +12,7 @@ export default function LogIn(props) {
   const [password, setPassword] = useState();
 
   async function validateApiCall() {
-    const {token, id} = await postAuth({
+    const {token, id, firstName, lastName} = await postAuth({
       username: userName,
       password: password,
     });
@@ -20,6 +20,7 @@ export default function LogIn(props) {
     if (!!token) {
       await setData(STORAGE.USER, id);
       await setData(STORAGE.TOKEN, token);
+      await setData(STORAGE.USERNAME, firstName+" "+lastName);
       navigation.navigate(ROUTES.HOME);
     } else {
       console.log('INVALID');
@@ -27,14 +28,17 @@ export default function LogIn(props) {
   }
 
   async function backDoor() {
-    const {token, id} = await postAuth({
+    const {token, id, firstName, lastName, ...other} = await postAuth({
       username: 'kminchelle',
       password: '0lelplR',
     });
 
+    console.log(other);
+
     if (!!token) {
       await setData(STORAGE.USER, id);
       await setData(STORAGE.TOKEN, token);
+      await setData(STORAGE.USERNAME, firstName+" "+lastName);
       navigation.navigate(ROUTES.HOME);
     } else {
       console.log('INVALID');

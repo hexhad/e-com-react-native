@@ -7,9 +7,9 @@ const Stack = createStackNavigator();
 
 export default function CartNavigation() {
   return (
-    <Stack.Navigator initialRouteName={ROUTES.HOME}>
-      <Stack.Screen name={ROUTES.PRODUCTS} component={Product} />
-      <Stack.Screen name={ROUTES.MORE_INFO} component={MoreInfo} />
+    <Stack.Navigator screenOptions={{headerBackTitleVisible:false}} initialRouteName={ROUTES.HOME} >
+      <Stack.Screen name={ROUTES.PRODUCTS} component={Product} options={{headerTitleAlign: 'center', headerLeft: null}} />
+      <Stack.Screen name={ROUTES.MORE_INFO} component={MoreInfo} options={{headerTitleAlign: 'center'}}/>
     </Stack.Navigator>
   );
 }
