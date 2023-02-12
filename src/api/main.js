@@ -1,18 +1,24 @@
 import {API} from '../constraints';
 
+// let url = new URL(API.URL);
+// url.searchParams.set('params',value);
+
 export async function postAuth(params) {
   let buildUrl = API.URL + API.AUTH;
+  // let buildUrl = new URL(API.AUTH,url);
   return await postMethod(buildUrl, params);
 }
 
 export async function getProduct(props) {
   let tail = !!props ? ('/' + props) : "";
   let buildUrl = API.URL + API.PRODUCTS + tail;
+  // let buildUrl = new URL(API.PRODUCTS+tail,url);
   return await getMethod(buildUrl);
 }
 
 export async function getUser(prop) {
   let buildUrl = API.URL + API.USER + prop;
+  // let buildUrl = new URL(API.USER + prop,url);
   return await getMethod(buildUrl);
 }
 
